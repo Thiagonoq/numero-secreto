@@ -2,7 +2,17 @@ function verificaNumeroValido(numeroFalado) {
 const numero = +numeroFalado;
 
     if (chuteInvalido(numero)) {
+        if (numeroFalado == 'game over') {
+            document.body.innerHTML = `
+            <h2>Você não quer mais jogar?!</h2>
+            <h3>Esperamos que volte logo!</h3>
+
+            <button id="jogar-novamente" class="btn-jogar">Jogar Novamente</button>
+            `
+            fundoGameOver();
+        } else {
         elementoChute.innerHTML += '<h4>Valor inválido!</h4><div>Tente novamente</div>';
+        }
     }
 
     if (valorMaiorOuMenorQuePermitido(numero)) {
@@ -44,3 +54,8 @@ document.body.addEventListener('click', e =>{
         window.location.reload();
     }
 })
+
+function fundoGameOver () {
+    document.body.style.backgroundColor = "#E74646";
+    document.body.style.color = "#FFE5CA";
+}
